@@ -1,26 +1,35 @@
-/*
- * Starter file 
- */
-(function() {
-  "use strict";
-
-  /**
-   * The starting point in our program, setting up a listener
-   * for the "load" event on the window, signalling the HTML DOM has been constructed
-   * on the page. When this event occurs, the attached function (init) will be called.
-   */
-  window.addEventListener("load", init);
-
-  /**
-   * TODO: Write a function comment using JSDoc.
-   */
-  function init() {
-    // Note: In this function, we usually want to set up our event handlers
-    // for UI elements on the page.
-  }
-
-  // Add any other functions in this area (you should not implement your
-  // entire program in the init function, for similar reasons that
-  // you shouldn't write an entire Java program in the main method).
-
-})();
+$(document).ready(async () => {
+  var shiftValue = 1;
+  let shiftText = $("#shift-value");
+  $("#decrement").on("click", ()=>{
+    shiftValue = (shiftValue + 25) % 26;
+    shiftText.text(shiftValue);
+  });
+  $("#increment").on("click", ()=>{
+    shiftValue = (shiftValue + 1) % 26;
+    shiftText.text(shiftValue);
+  });
+  let inputField = $("#input-text");
+  let resultField = $("#result");
+  $("#encrypt-it").on("click", ()=>{
+    let inputText = inputField.val();
+    var outputText = "";
+    for(var i = 0; i < inputText.length; i++){
+      let currentChar = inputText.charCodeAt(i);
+      //'A' = 65, 'Z' = 90
+      if(65 <= currentChar && currentChar <= 90){
+        outputText += String.fromCharCode(((currentChar - 65 + shiftValue) % 26) + 65);
+      //'a' = 97, 'z' = 122
+      }else if(97 <= currentChar && currentChar <= 122){
+        outputText += String.fromCharCode(((currentChar - 97 + shiftValue) % 26) + 97);
+      } else {
+        outputText += String.fromCharCode(currentChar);
+      }
+    }
+    resultField.text(outputText);
+  })
+  $("#reset").on("click", ()=>{
+    inputField.val("");
+    resultField.text("");
+  })
+});

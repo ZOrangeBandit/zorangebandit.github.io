@@ -4,6 +4,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Orbitron|Lato');
 
+
+.circle {
+  min-width: 0px!important;
+  aspect-ratio: 1/1;
+  height: 32px;
+  border-radius:50%!important;
+}
 /* Typography */
 
 body {
