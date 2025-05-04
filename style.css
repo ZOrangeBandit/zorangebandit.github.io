@@ -1,0 +1,8 @@
+:root {
+  --image-size: 4em;
+}
+#car {
+  width: calc(var(--image-size) * 16);
+  height: calc(var(--image-size) * 9);
+  border-radius: calc(var(--image-size) / 4);
+}
