@@ -30,7 +30,7 @@ $(document).ready(async () => {
     switch(event.target.value){
       case "boring":
         textBox.css({
-          "color": "#000000",
+          "color": "white",
           "text-decoration": "initial",
           "font-weight": "normal"
         });
